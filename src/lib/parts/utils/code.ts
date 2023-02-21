@@ -16,7 +16,7 @@ export class waitForCode {
         const result = await this.getStatus(id);
         if (result.message == EActivationGetStatusAnswer.STATUS_OK)
           return resolve(result.data);
-        if (result.message != EActivationGetStatusAnswer.STATUS_WAIT_CODE)
+        if (result.message != EActivationGetStatusAnswer.STATUS_WAIT_CODE && result.message != EActivationGetStatusAnswer.STATUS_WAIT_RETRY)
           return reject(result.code);
         await sleep(space);
       }
